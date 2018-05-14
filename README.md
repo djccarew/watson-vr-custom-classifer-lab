@@ -142,7 +142,19 @@ test_data/wedding/0023.jpg
 
 `gradlew.bat run`
 
-3.3.4 Verify the app runs without errors and the output looks like the following.
+3.3.4 (Optional) Run the following command to generate Eclipse artifacts so the project can be imported into Eclipse 
+
+**Linux/Mac**
+
+`./gradlew eclipse`
+
+**Windows**
+
+`gradlew.bat eclipse`
+
+Note: after running the command import this folder as an existing project into Eclipse
+
+3.3.5 Verify the app runs without errors and the output looks like the following.
 
 ```
 Finished classifying 60 images
@@ -160,7 +172,7 @@ BUILD SUCCESSFUL in 55s
 3 actionable tasks: 1 executed, 2 up-to-date
 ```
 
-3.3.5 Look at the files that were reported as false positives or false negatives and see if you can see why the classifier had problems with these particular images.
+3.3.6 Look at the files that were reported as false positives or false negatives and see if you can see why the classifier had problems with these particular images.
 
 ## Conclusion
 Congratulations ! You successfully created a classifier to detect wedding pictures. With just 50 examples and 50 negative examples your were able to quickly created a classifier that is approximately  97% accurate on some randomly selected  test examples. 
