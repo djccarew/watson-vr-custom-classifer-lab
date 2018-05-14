@@ -67,12 +67,12 @@ Test the classifier with the GUI tool using single images and then test using 60
 
 Python app requirements
 
-  i) [Python 3.5](https://www.python.org/downloads) or later.
+  - [Python 3.5](https://www.python.org/downloads) or later.
 
 Java app requirements:
 
-  i) Java 1.7 or later JVM
-  ii) [Gradle Build Tool](https://gradle.org)
+  - Java 1.7 or later JVM
+  - [Gradle Build Tool](https://gradle.org)
 
 
 ### 3.1 Test with GUI tool
