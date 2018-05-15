@@ -89,7 +89,7 @@ Java app requirements:
 
 3.2.2 In a command prompt or terminal navigate to the ***test_apps/python*** sub folder of this project. Run the following command to install the dependencies
 
-`pip -r requirements.txt`
+`pip install -r requirements.txt`
 
 3.2.3 Run the following command to run the tester application
 
