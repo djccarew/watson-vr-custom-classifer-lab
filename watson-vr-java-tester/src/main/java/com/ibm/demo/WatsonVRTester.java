@@ -68,6 +68,10 @@ public class WatsonVRTester {
 		// Get all jog files in test image folder
 		File dir = new File(properties.getProperty("TEST_IMAGE_DIR"));
 		String[] extensions = new String[] { "jpg" };
+		
+		if (!dir.isDirectory()) {
+			dir = new File(properties.getProperty("TEST_DATA_DIR").replaceAll("\\.\\.", ""));
+		}
 
 		List<File> files = (List<File>) FileUtils.listFiles(dir, extensions, true);
 
@@ -83,7 +87,7 @@ public class WatsonVRTester {
 			List<ClassResult> classes = classifier.getClasses();
 			
 			// Handle test images that are not wedding photos
-			if (file.getCanonicalPath().contains("/notwedding/")) {
+			if (file.getCanonicalPath().contains("notwedding")) {
 				// true negative because it isn't a wedding photo and classifier thinks it isn't
 				// one too
 				if (classes.isEmpty()) {
