@@ -14,8 +14,9 @@ def main():
       api_key =  settings.API_KEY 
       classifier_id = settings.CLASSIFIER_ID
       test_images_dir = settings.TEST_IMAGES_DIR
-        
-   visual_recognition = VisualRecognitionV3('2018-03-19', api_key=api_key)
+   print(api_key)
+   visual_recognition = VisualRecognitionV3('2018-05-22', iam_api_key=api_key, 
+    url='https://gateway.watsonplatform.net/visual-recognition/api')
   
    parameters = json.dumps({'threshold': 0.72, 'owners': ['me'],'classifier_ids': [classifier_id]})
    true_positives = 0
