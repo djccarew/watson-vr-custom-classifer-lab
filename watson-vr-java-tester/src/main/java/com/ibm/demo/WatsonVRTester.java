@@ -16,6 +16,7 @@ import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassResult;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifierResult;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImage;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
+import com.ibm.watson.developer_cloud.service.security.IamOptions;
 import com.ibm.watson.developer_cloud.util.HttpLogging;
 
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -44,8 +45,12 @@ public class WatsonVRTester {
 		}
 
 		// Create service client
-		VisualRecognition service = new VisualRecognition("2018-03-19");
-		service.setApiKey(properties.getProperty("API_KEY"));
+		IamOptions iamOps = new IamOptions.Builder()
+        	.apiKey(properties.getProperty("API_KEY"))
+        	.build();
+    	VisualRecognition service = new VisualRecognition("2018-03-19", iamOps);
+    	service.setEndPoint("https://gateway.watsonplatform.net/visual-recognition/api");
+		
         
         // Turn off HTTP logging
         // Default is BASIC which  logs all HTTP requests to the Watson services

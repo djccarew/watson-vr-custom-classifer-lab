@@ -25,7 +25,7 @@ dependencies {
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
     
-    implementation 'com.ibm.watson.developer_cloud:visual-recognition:5.4.0'
+    implementation 'com.ibm.watson.developer_cloud:visual-recognition:5.5.0'
     
       
     implementation'commons-io:commons-io:2.6'
