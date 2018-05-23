@@ -89,6 +89,20 @@ Java app requirements:
 
 3.2.2 In a command prompt or terminal navigate to the ***test_apps/python*** sub folder of this project. Run the following command to install the dependencies
 
+Setting up a virtual environment is very helpful when managing dependencies for specific applications.
+
+`pip install -r virtualenv`
+
+Create a virtual environment
+
+`virtualenv -p python3 venv`
+
+Activate the new virtual environment
+
+`source venv/bin/activate`
+
+Now install the dependencies for this project
+
 `pip install -r requirements.txt`
 
 3.2.3 Run the following command to run the tester application
@@ -117,6 +131,10 @@ test_data/wedding/0023.jpg
 ```
 
 3.2.5 Look at the files that were reported as false positives or false negatives and see if you can see why the classifier had problems with these particular images.
+
+3.2.6 Exit out of the applications virtual environment
+
+`deactivate`
 
 ### 3.3 Test with a Java app
 
