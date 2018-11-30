@@ -27,7 +27,7 @@ import okhttp3.logging.HttpLoggingInterceptor.Level;
 // classifier trained to recognize wedding pictures. The companion file settings.properties is where the // service credentials, custom classifier id  and location of the test images are provided to
 // this application
 public class WatsonVRTester {
-    
+
 	public static void main(String[] args) throws IOException {
 
 		// Getting required properties
@@ -44,20 +44,28 @@ public class WatsonVRTester {
 			System.exit(1);
 		}
 
+    // Exit if properties set to empty string
+    if (properties.getProperty("API_KEY").trim().equals("")|| properties.getProperty("CLASSIFIER_ID").trim().equals("")
+        || properties.getProperty("TEST_IMAGE_DIR").trim().equals("")) {
+      System.err.println("Error: API_KEY, CLASSIFIER_ID and/or TEST_IMAGES_DIR missing. Terminating ...");
+      System.exit(1);
+    }
+
+
 		// Create service client
 		IamOptions iamOps = new IamOptions.Builder()
         	.apiKey(properties.getProperty("API_KEY"))
         	.build();
     	VisualRecognition service = new VisualRecognition("2018-03-19", iamOps);
     	service.setEndPoint("https://gateway.watsonplatform.net/visual-recognition/api");
-		
-        
+
+
         // Turn off HTTP logging
         // Default is BASIC which  logs all HTTP requests to the Watson services
         // Commenting out these 2 lines will revert to  the  default behavior
         HttpLoggingInterceptor httpLogger = HttpLogging.getLoggingInterceptor();
         httpLogger.setLevel(Level.NONE);
-        
+
 
 		// Testing stats
 		int truePositives = 0;
@@ -73,7 +81,7 @@ public class WatsonVRTester {
 		// Get all jog files in test image folder
 		File dir = new File(properties.getProperty("TEST_IMAGE_DIR"));
 		String[] extensions = new String[] { "jpg" };
-		
+
 		if (!dir.isDirectory()) {
 			dir = new File(properties.getProperty("TEST_DATA_DIR").replaceAll("\\.\\.", ""));
 		}
@@ -90,7 +98,7 @@ public class WatsonVRTester {
 		    ClassifiedImage image = result.getImages().get(0);
             ClassifierResult classifier  = image.getClassifiers().get(0);
 			List<ClassResult> classes = classifier.getClasses();
-			
+
 			// Handle test images that are not wedding photos
 			if (file.getCanonicalPath().contains("notwedding")) {
 				// true negative because it isn't a wedding photo and classifier thinks it isn't
@@ -118,7 +126,7 @@ public class WatsonVRTester {
 					++truePositives;
 				}
 			}
-            
+
 			if (++filesProcessed % 10 == 0)
 				System.out.println("Finished classifying " + filesProcessed + " images");
 		}
@@ -140,7 +148,7 @@ public class WatsonVRTester {
 
 			}
 		}
-        
+
 		if (falseNegativesList.size() > 0) {
 			System.out.println("False negative list");
 			for (String falseNegativeImageName : falseNegativesList) {
