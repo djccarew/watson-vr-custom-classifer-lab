@@ -1,7 +1,7 @@
 
-#  Create and deploy a scoring model to predict heart failure on IBM Cloud with Watson Studio
+#  Create a Watson Visual Recognition custom classifier to detect wedding scenes
 
-[The Watson Visual Recognition service](https://www.ibm.com/watson/services/visual-recognition/) can be trained to recognize your own custom classes in images. In this lab you'll learn how to  train a  Watson Visual Recognition custom classifier  to recognition wedding scenes using 50 images of weddings to serve as positive examples  and 50 images that are not weddings to serve as  negative examples.
+[The Watson Visual Recognition service](https://www.ibm.com/watson/services/visual-recognition/) can be trained to recognize your own custom classes in images. In this lab you'll learn how to  train a  Watson Visual Recognition custom classifier  to recognize  wedding scenes using 50 images of weddings to serve as positive examples  and 50 images that are not weddings to serve as  negative examples.
 
 After creating the custom classifier, you'll test it with different images not used to train it to validate it's accuracy.  
 
@@ -66,17 +66,6 @@ Documentation is available [here](https://dataplatform.cloud.ibm.com/docs/conten
    8. **IBM Studio Menu** - Quick link to the Watson Studio welcome page
    9. **Account Profile and Settings** - Personal account settings
 
-#### Overview Project Page
-
-  ![](doc/source/images/watson-studio-project-overview.png?raw=true)
-
-  1. **Overview** - The page you're seeing now, shows who is collaborating on the projects, and number of assets associated
-  2. **Assets** - Links to each asset found within the project, broken down into categories
-  3. **Environments** - Track you capacity units used, and manage Anaconda environments.
-  4. **Access Control** - Manage collaborators for project
-  5. **Readme** - Markdown documentation for projecct
-  6. **Add to Project** - Create, connect, or import new assets to project
-
 ## 3. Create a project in Watson Studio and upload training data
 A project is how you organize your resources to achieve a particular goal. Your project resources can include data, collaborators, and analytic assets like notebooks and models. Projects depends on a connection to object storage to store assets. Each project has a separate bucket to hold the project's assets.
 
@@ -84,12 +73,11 @@ A project is how you organize your resources to achieve a particular goal. Your 
 
   ![](doc/source/images/new-project.png?raw=true)
 
-2. Select project type. There are many different tools built into Watson Studio and multiple views are built to simplify the features shown to users.  Select the `Visual Recognition Project`  and click `Create Project`.
+2. Select project type. There are many different tools built into Watson Studio and multiple views are built to simplify the features shown to users.  Select the `Visual Recognition`  and click `Create Project`.
 
   ![](doc/source/images/vr-project.png?raw=true)
 
-3. A Watson Studio Visual Recognition project depends on an instance of the Watson Visual Recognition Service.  If you don't already have an instance of Watson Visual Recognition created you can create a new instance of the service directly from the New Project dialog. Under `Define Watson Visual Recognition` click `Add`. In the Cloud Object Storage service creation menu, accept the default options and click  on  `Create`.  
-
+3. A Watson Studio Visual Recognition project depends on an instance of the Watson Visual Recognition Service.  If you don't already have an instance of Watson Visual Recognition created you can create a new instance of the service directly from the New Project dialog. Under `Define Watson Visual Recognition` click `Add`. In the Watson Visual Recognition service creation menu, accept the default options and click  on  `Create`.  
 
 4. With the Visual Recognition service instance created,  click `Refresh` allowing Watson Studio to discover the newly created service. Enter _Wedding Detection_ as the project name and click `Create`.
 
@@ -103,8 +91,6 @@ A project is how you organize your resources to achieve a particular goal. Your 
 
 
 ## 4. Train your custom classifier
-
-Machine Learning is a service on IBM Cloud with features for training and deploying machine learning models and neural networks:
 
 
 1. Click on `Create a class` and name the class _wedding_.
@@ -161,7 +147,7 @@ The results will indicate how confident your classifier is that the image you se
 
   ![](doc/source/images/watson-services.png?raw=true)
 
-5. In the `Visual Recognition` section click on the name of your service instances
+5. In the `Visual Recognition` section click on the name of your service instance
 
 6. Click on the `Credentials` tab
 
@@ -262,7 +248,7 @@ Run the following commands to get a bash shell in a Python environment to run th
 
 `cd /repo/watson-vr-java-tester`
 
-### Locally installed Python
+### Locally installed Java
 Run the subsequent commands  from your command prompt
 
 7.2.3 Run the following command to build the app
