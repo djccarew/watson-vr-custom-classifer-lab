@@ -58,6 +58,12 @@ def main():
    print("False negatives {:d}".format(false_negatives))
    accuracy = (true_positives + true_negatives)/len(test_files)
    print("Accuracy {:6.2f}%".format(accuracy*100))
+   recall = true_positives/(true_positives+false_negatives)
+   print("Recall {:6.2f}".format(recall))
+   precision = true_positives/(true_positives+false_positives)
+   print("Precision {:6.2f}".format(precision))
+   f1_score = 2 * ((precision * recall)/(precision + recall))
+   print("F1 Score {:6.2f}".format(f1_score))
 
    if false_positive_list:
       print("False positive list")

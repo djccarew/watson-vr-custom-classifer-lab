@@ -139,7 +139,13 @@ public class WatsonVRTester {
 		System.out.println("False negatives " + falseNegatives);
 
 		float accuracy = (truePositives + trueNegatives) / (float) filesProcessed;
-		System.out.println("Accuracy " + String.format("%.2f", accuracy * 100));
+		System.out.println("Accuracy " + String.format("%.2f", accuracy * 100) + "%");
+    float recall = truePositives/(float) (truePositives + falseNegatives);
+    System.out.println("Recall " + String.format("%.2f", recall));
+    float precision = truePositives/(float) (truePositives + falsePositives);
+    System.out.println("Precision " + String.format("%.2f", precision));
+    float f1Score = 2 * ((recall * precision)/(recall + precision));
+    System.out.println("F1 Score " + String.format("%.2f", f1Score));
 
 		if (falsePositivesList.size() > 0) {
 			System.out.println("False positive list");

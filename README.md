@@ -226,6 +226,9 @@ True negatives 30
 False positives 0
 False negatives 3
 Accuracy  95.00%
+Recall   0.90
+Precision   1.00
+F1 Score   0.95
 False negative list
 ../test_data/wedding/0006.jpg
 ../test_data/wedding/0029.jpg
@@ -285,6 +288,9 @@ True negatives 30
 False positives 0
 False negatives 3
 Accuracy  95.00%
+Recall   0.90
+Precision   1.00
+F1 Score   0.95
 False negative list
 test_data/wedding/0006.jpg
 test_data/wedding/0029.jpg
