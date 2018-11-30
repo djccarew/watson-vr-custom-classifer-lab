@@ -168,9 +168,8 @@ You can install Python/Java locally or use Docker
 #### Docker
 If you use Docker you can run either app without additional software installs
 
-Docker requirements
+Docker requirements:
 [Docker for your platform](https://docs.docker.com/install/)
-
 
 #### Local Java or Python
 If you don't use  Docker then you'll need one of the following installed locally
@@ -246,7 +245,7 @@ False negative list
 
 ### Docker
 
-Run the following commands to get a bash shell in a Python environment to run the subsequent commands
+Run the following commands to get a bash shell in a Java+Gradle environment to run the subsequent commands
 
 `docker run -it --rm -v "$(cd ../ && pwd):/repo"  gradle:slim  bash`
 
