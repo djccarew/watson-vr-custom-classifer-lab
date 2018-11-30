@@ -93,7 +93,7 @@ public class WatsonVRTester {
 		// Classify each file
 		for (File file : files) {
 			ClassifyOptions options = new ClassifyOptions.Builder().imagesFile(file)
-					.addClassifierId(properties.getProperty("CLASSIFIER_ID")).threshold(0.72f).build();
+					.addClassifierId(properties.getProperty("CLASSIFIER_ID")).threshold(0.55f).build();
 			ClassifiedImages result = service.classify(options).execute();
 		    ClassifiedImage image = result.getImages().get(0);
             ClassifierResult classifier  = image.getClassifiers().get(0);

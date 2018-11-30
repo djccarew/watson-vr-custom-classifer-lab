@@ -14,7 +14,7 @@ def main():
       api_key =  settings.API_KEY
       classifier_id = settings.CLASSIFIER_ID
       test_images_dir = settings.TEST_IMAGES_DIR
-   print(api_key)
+
    visual_recognition = VisualRecognitionV3('2018-05-22', iam_apikey=api_key,
     url='https://gateway.watsonplatform.net/visual-recognition/api')
 
@@ -31,7 +31,7 @@ def main():
    print('Classifying %d test images ...' % (len(test_files)))
    for filename in  test_files:
         with open(filename, 'rb') as image_file:
-            results = visual_recognition.classify(images_file=image_file, threshold='0.76', classifier_ids=classifier_id).get_result()
+            results = visual_recognition.classify(images_file=image_file, threshold='0.55', classifier_ids=classifier_id).get_result()
             if '/notwedding/' in filename:
                 #print(results["images"][0]["classifiers"][0])
                 if not results["images"][0]["classifiers"][0]["classes"]:

@@ -221,14 +221,15 @@ Finished classifying  40 images
 Finished classifying  50 images
 Finished classifying  60 images
 Number of files 60
-True positives 28
+True positives 27
 True negatives 30
 False positives 0
-False negatives 2
-Accuracy  96.67%
+False negatives 3
+Accuracy  95.00%
 False negative list
-test_data/wedding/0029.jpg
-test_data/wedding/0023.jpg
+../test_data/wedding/0006.jpg
+../test_data/wedding/0029.jpg
+../test_data/wedding/0023.jpg
 ```
 
 7.1.6 Look at the files that were reported as false positives or false negatives and see if you can guess why the classifier had problems with these particular images.
@@ -279,12 +280,13 @@ Finished classifying  40 images
 Finished classifying  50 images
 Finished classifying  60 images
 Number of files 60
-True positives 28
+True positives 27
 True negatives 30
 False positives 0
-False negatives 2
-Accuracy  96.67%
+False negatives 3
+Accuracy  95.00%
 False negative list
+test_data/wedding/0006.jpg
 test_data/wedding/0029.jpg
 test_data/wedding/0023.jpg
 ```
@@ -292,7 +294,7 @@ test_data/wedding/0023.jpg
 7.2.6 Look at the files that were reported as false positives or false negatives and see if you can guess why the classifier had problems with these particular images.
 
 # Conclusion
-Congratulations ! You successfully created a classifier to detect wedding pictures. With just 50 examples and 50 negative examples your were able to quickly created a classifier that is approximately  93.3% accurate on some randomly selected  test examples.
+Congratulations ! You successfully created a classifier to detect wedding pictures. With just 50 examples and 50 negative examples your were able to quickly created a classifier that is approximately  95% accurate on some randomly selected  test examples.
 
 
 # License
