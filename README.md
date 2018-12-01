@@ -135,7 +135,7 @@ The results will indicate how confident your classifier is that the image you se
 
 ## 6. Get the credentials needed to access the classifier programmatically
 
-1. Switch over to the `Implementation` tab
+1. Switch over to the `Overview` tab
 
 2. Click on the icon next to the `Model ID` to copy it to the clipboard
 
@@ -160,18 +160,20 @@ The results will indicate how confident your classifier is that the image you se
 
 ## 7. Test the classifier programatically
 
-This will test the classifier using 60 test images via a standalone app
+This will test the classifier using 60 test images via a standalone app. There are two apps to chose from: Python or Java.
 
-#### Requirements
+### 1. Installation Requirements
 You can install Python/Java locally or use Docker
 
-#### Docker
-If you use Docker you can run either app without additional software installs
+#### Option 1: Docker
+If you use Docker you can run either app without additional software installs.
 
 Docker requirements:
 [Docker for your platform](https://docs.docker.com/install/)
 
-#### Local Java or Python
+If you *really* don't want to install anything locally, you can always use the online tool: http://play-with-docker.com
+
+#### Option 2: Local Python or Java
 If you don't use  Docker then you'll need one of the following installed locally
 
 Python:
@@ -184,32 +186,32 @@ Java:
   - [Gradle Build Tool](https://gradle.org) Note: Version 4.7 was used to verify this example
 
 
-### 7.1 Test with a Python app
+### 2a. Test with a Python app
 
-7.1.1 Edit the file ***settings.py*** Edit the file ***settings.properties*** in the ***watson-vr-python-tester*** sub folder of this project. Put in the values of your **apikey** and **Model ID** that you saved earlier. Note the **Model ID** is referred to as the **CLASSIFIER_ID** in the settings file.
+#### 1. Configure the App
 
-7.1.2 In a command prompt or terminal navigate to the ***watson-vr-python-tester*** sub folder of this project.
+1. Edit the file ***settings.py*** Edit the file ***settings.properties*** in the ***watson-vr-python-tester*** sub folder of this project. Put in the values of your **apikey** and **Model ID** that you saved earlier. Note the **Model ID** is referred to as the **CLASSIFIER_ID** in the settings file.
 
-### Docker
+2.  In a command prompt or terminal navigate to the ***watson-vr-python-tester*** sub folder of this project.
 
-Run the following commands to get a bash shell in a Python environment to run the subsequent commands
+#### 2. Docker
 
-`docker run -it --rm -v "$(cd ../ && pwd):/repo"  python:3.5-jessie  bash`
+If using Docker (not locally instally Python), run the following commands to get a bash shell in a Python environment before running the commands in the next step.
 
-`cd /repo/watson-vr-python-tester`
+```bash
+docker run -it --rm -v "$(cd ../ && pwd):/repo"  python:3.5-jessie  bash
+cd /repo/watson-vr-python-tester
+```
 
-### Locally installed Python
-Run the subsequent commands  from your command prompt
+#### 3. Run the app
+Run the subsequent commands  from your command prompt to install and run the app
 
-7.1.3 Run the following command to install the dependencies
+```bash
+pip install -r requirements.txt
+python watsonvr-wedding-tester.py
+```
 
-`pip install -r requirements.txt`
-
-7.1.4 Run the following command to run the tester application
-
-`python watsonvr-wedding-tester.py`
-
-7.1.5 Verify the app runs without errors and the output looks like the following.
+Verify the app runs without errors and the output looks like the following.
 
 ```
 Classifying 60 test images ...
@@ -234,44 +236,46 @@ False negative list
 ../test_data/wedding/0023.jpg
 ```
 
-7.1.6 Look at the files that were reported as false positives or false negatives and see if you can guess why the classifier had problems with these particular images.
+#### 4. Inspect the results
+Look at the files that were reported as false positives or false negatives and see if you can guess why the classifier had problems with these particular images.
 
+#### 5. Clean Up
+If you are using Docker, exit the container by running the command `exit` in the command prompt
 
-### 7.2 Test with a Java app
+### 2b. Test with a Java app
 
-7.2.1 Edit the file ***settings.py*** Edit the file ***settings.properties*** in the ***watson-vr-java-tester/src/main/resources*** sub folder of this project. Put in the values of your **apikey** and **Model ID** that you saved earlier. Note the **Model ID** is referred to as the **CLASSIFIER_ID** in the settings file.
+#### 1. Configure the App
+1. Edit the file ***settings.py*** Edit the file ***settings.properties*** in the ***watson-vr-java-tester/src/main/resources*** sub folder of this project. Put in the values of your **apikey** and **Model ID** that you saved earlier. Note the **Model ID** is referred to as the **CLASSIFIER_ID** in the settings file.
 
-7.2.2 In a command prompt or terminal navigate to the ***watson-vr-java-tester*** sub folder of this project.
+2. In a command prompt or terminal navigate to the ***watson-vr-java-tester*** sub folder of this project.
 
-### Docker
+#### 2. Docker
 
-Run the following commands to get a bash shell in a Java+Gradle environment to run the subsequent commands
+If using Docker (not locally instally Java), run the following commands to get a bash shell in a Java+Gradle environment before running the commands in the next step.
 
-`docker run -it --rm -v "$(cd ../ && pwd):/repo"  gradle:slim  bash`
+```bash
+docker run -it --rm -v "$(cd ../ && pwd):/repo"  gradle:slim  bash
+cd /repo/watson-vr-java-tester
+```
 
-`cd /repo/watson-vr-java-tester`
+#### 3. Run the App
+Run the subsequent commands  from your command prompt to build and run the app
 
-### Locally installed Java
-Run the subsequent commands  from your command prompt
+#### Linux/Mac/Docker
+```bash
+./gradlew build
+./gradlew run
+```
 
-7.2.3 Run the following command to build the app
-
-#### Linux/Mac
-`./gradlew build`
 
 #### Windows
-`gradlew.bat build`
-
-7.2.4 Run the following command to run the tester application
-
-#### Linux/Mac
-`./gradlew run`
-
-#### Windows
-`gradlew.bat run`
+```
+gradlew.bat build
+gradlew.bat run
+```
 
 
-7.2.5 Verify the app runs without errors and the output looks like the following.
+Verify the app runs without errors and the output looks like the following.
 
 ```
 Classifying 60 test images ...
@@ -296,7 +300,12 @@ test_data/wedding/0029.jpg
 test_data/wedding/0023.jpg
 ```
 
-7.2.6 Look at the files that were reported as false positives or false negatives and see if you can guess why the classifier had problems with these particular images.
+
+#### 4. Inspect the results
+Look at the files that were reported as false positives or false negatives and see if you can guess why the classifier had problems with these particular images.
+
+#### 5. Clean Up
+If you are using Docker, exit the container by running the command `exit` in the command prompt
 
 # Conclusion
 Congratulations ! You successfully created a classifier to detect wedding pictures. With just 50 examples and 50 negative examples your were able to quickly created a classifier that is approximately  95% accurate on some randomly selected  test examples.
